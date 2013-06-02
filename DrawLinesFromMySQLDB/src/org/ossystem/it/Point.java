@@ -41,6 +41,6 @@ public class Point {
 	}
 	
 	public String toString() {
-		return this.id+". "+this.name+" has the coordinates:"+" X:"+this.XX+"   Y:"+this.YY;
+		return this.id+" ["+this.XX+", "+this.YY+"]";
 	}
 }

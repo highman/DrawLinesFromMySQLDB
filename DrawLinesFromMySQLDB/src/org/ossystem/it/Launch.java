@@ -10,19 +10,14 @@ public class Launch {
 	 */
 	public static void main(String[] args) {
 		Point p = new Point();
-		Point pTemp;
-		p.setName("Start point");
-		p.setXX(0);
-		p.setYY(0);
-		//PointDAOImpl.getInstance().addPoint(p);
+		Point pStart = null, pEnd = null;		
+		p.setName("Forth point");
+		p.setXX(215);
+		p.setYY(10);
+		PointDAOImpl.getInstance().addPoint(p);
 		List<Point> list = PointDAOImpl.getInstance().getAllPoints();
-		Iterator<Point> it = list.iterator();
-		while(it.hasNext()) {
-			System.out.println(p);
-			pTemp = it.next();
-			p = pTemp;
-			System.out.println(pTemp);
-			
-		}				
+		for(Point temp: list)
+			System.out.println(temp);
+					
 	}
 }
