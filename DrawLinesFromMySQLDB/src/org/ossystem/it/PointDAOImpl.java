@@ -12,9 +12,8 @@ import java.util.List;
 public class PointDAOImpl implements PointDAO {
 	
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-	static final String JDBC_URL = "jdbc:mysql://localhost/";/*"jdbc:mysql://localhost:3306/MySQLDB" 
-								   	+ "?user=user&password=pass" 
-								   + "?createDatabaseIfNotExist=true";*/	
+	static final String JDBC_URL = "jdbc:mysql://localhost:3306/MySQLDB" 
+								   	+ "?user=root&password=kostya&createDatabaseIfNotExist=true";	
 	   
 	private static final String CREATE_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS Points(" +
 															"ID INT NOT NULL AUTO_INCREMENT, " +
@@ -35,14 +34,9 @@ public class PointDAOImpl implements PointDAO {
 	
 	private PointDAOImpl() {			
 		try {
-			Class.forName(JDBC_DRIVER);
-			System.out.println("Загрузили драйвер");
-			try(Connection connection = getConnection()) {
-				System.out.println("Получили соединение к базе данных");
-				executeStatement(connection, "CREATE DATABASE MySQLDB");
-				System.out.println("Создали базу данных");
-				executeStatement(connection,CREATE_TABLE_QUERY);
-				System.out.println("Создали таблицу");
+			Class.forName(JDBC_DRIVER);			
+			try(Connection connection = getConnection()) {								
+				executeStatement(connection,CREATE_TABLE_QUERY);				
 			} 
 		} catch (ClassNotFoundException | SQLException ex) {
 			System.out.println("Database error:" + ex.getMessage());
@@ -59,10 +53,8 @@ public class PointDAOImpl implements PointDAO {
 	
 	private Connection getConnection() {
 		Connection conn = null;		
-		try {
-			System.out.println("Пробуем получить соединение....");
-			conn = DriverManager.getConnection(JDBC_URL, "root", "");
-			System.out.println("Получили соединение!!!");
+		try {			
+			conn = DriverManager.getConnection(JDBC_URL);			
 		} catch (SQLException sqle) {
 			throw new RuntimeException("Error in getting a DB connection.",	sqle);
 		}
@@ -100,9 +92,9 @@ public class PointDAOImpl implements PointDAO {
 	}
 
 	@Override
-	public void deletePoint(Point p) {
+	public void deletePoint(int id) {
 		try(Connection connection = getConnection()) {
-			executeStatement(connection, DELETE_QUERY, p.getId());
+			executeStatement(connection, DELETE_QUERY, id);
 		} catch (Exception ex) {
 			System.out.println("Database error:" + ex.getMessage());
 		}					

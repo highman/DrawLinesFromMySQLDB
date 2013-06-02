@@ -1,5 +1,6 @@
 package org.ossystem.it;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class Launch {
@@ -9,15 +10,19 @@ public class Launch {
 	 */
 	public static void main(String[] args) {
 		Point p = new Point();
-		p.setName("Point 1");
-		p.setXX(2);
-		p.setYY(4);
-		PointDAOImpl.getInstance().addPoint(p);
-		//List<Point> list = PointDAOImpl.getInstance().getAllPoints();
-		//for(Point p3 : list)
-			//System.out.println(p3);
+		Point pTemp;
+		p.setName("Start point");
+		p.setXX(0);
+		p.setYY(0);
+		//PointDAOImpl.getInstance().addPoint(p);
+		List<Point> list = PointDAOImpl.getInstance().getAllPoints();
+		Iterator<Point> it = list.iterator();
+		while(it.hasNext()) {
+			System.out.println(p);
+			pTemp = it.next();
+			p = pTemp;
+			System.out.println(pTemp);
 			
-
+		}				
 	}
-
 }
