@@ -17,6 +17,7 @@ class  PaintPanel  extends  JPanel  {
 		setBorder(BorderFactory.createLineBorder(Color.RED,  5));		
 }
 
+	@SuppressWarnings("unused")
 	protected void paintComponent(Graphics  g)  {
 		Point pStart = null, pEnd = null;
 		List<Point> list = PointDAOImpl.getInstance().getAllPoints();

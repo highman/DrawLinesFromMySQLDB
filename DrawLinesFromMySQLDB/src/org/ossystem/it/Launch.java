@@ -1,6 +1,5 @@
 package org.ossystem.it;
 
-import java.util.Iterator;
 import java.util.List;
 
 public class Launch {
@@ -8,6 +7,7 @@ public class Launch {
 	/**
 	 * @param args
 	 */
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		Point p = new Point();
 		Point pStart = null, pEnd = null;		
