@@ -123,8 +123,8 @@ public class PointDAOImpl implements PointDAO {
 	}
 
 	@Override
-	public List<Point> getAllPoints() {
-		List<Point> list = new ArrayList<>(); 
+	public ArrayList<Point> getAllPoints() {
+		ArrayList<Point> list = new ArrayList<>(); 
 		try(Connection connection = getConnection()) {
 			try(PreparedStatement statement = connection.prepareStatement(SELECT_ALL_QUERY)) {				
 				try (ResultSet resultSet = statement.executeQuery()) {
