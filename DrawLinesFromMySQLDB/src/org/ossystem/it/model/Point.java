@@ -1,4 +1,4 @@
-package org.ossystem.it;
+package org.ossystem.it.model;
 
 public class Point {
 	private int id;

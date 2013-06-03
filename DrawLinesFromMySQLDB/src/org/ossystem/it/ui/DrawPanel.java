@@ -1,24 +1,27 @@
-package org.ossystem.it;
+package org.ossystem.it.ui;
 
 import  java.awt.*;
 import  javax.swing.*;
+
+import org.ossystem.it.db.PointDAOImpl;
+import org.ossystem.it.model.Point;
+
 import  java.util.*;
-import java.util.List;
 
 
-class  PaintPanel  extends  JPanel  {
+class DrawPanel extends JPanel {
 
 	private static final long serialVersionUID = -1774331048649370207L;
 	
 	Insets  ins;  //  хранит размеры  внутренней  части панели	
 
-	PaintPanel()  {
+	DrawPanel()  {
 		setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,  5));		
 }
 	
 	protected void paintComponent(Graphics  g)  {
 		Point pStart = null, pEnd = null;
-		List<Point> list = PointDAOImpl.getInstance().getAllPoints();
+		ArrayList<Point> list = PointDAOImpl.getInstance().getAllPoints();
 		Iterator<Point> it = list.iterator();
 		super.paintComponent(g) ;		
 		ins  =  getInsets();

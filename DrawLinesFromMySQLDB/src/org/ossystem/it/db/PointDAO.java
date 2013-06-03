@@ -1,6 +1,8 @@
-package org.ossystem.it;
+package org.ossystem.it.db;
 
 import java.util.*;
+
+import org.ossystem.it.model.Point;
 
 public interface PointDAO {
 	void addPoint(Point p);
